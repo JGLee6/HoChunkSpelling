@@ -5,6 +5,8 @@ Created on Thu Jul 29 08:39:58 2021
 
 @author: John Greendeer Lee
 """
+import re
+
 replace_dict = {'à': 'a', 'á': 'a', 'â': 'a', 'ä': 'a', 'å': 'a', 'ā́': 'a',
                 'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e', 'ì': 'i', 'í': 'i',
                 'î': 'i', 'ï': 'i', 'ñ': '̨r', 'ò': 'o', 'ó': 'o', 'ö': 'o',
@@ -42,32 +44,41 @@ def clean_characters(text):
 nasaldict = {'na': 'ną', 'ni': 'nį', 'nu': 'nų', 'ma': 'mą',
              'mi': 'mį', 'mu': 'mų'}
 checkdict = {'inj': 'įj', 'unj': 'ųj', 'jhi': 'cii', 'sh': 'š', 'zh': 'ž',
-             'phi': 'pi', 'še-': 'že’', 'ing': 'įg',
+             'phi': 'pi', 'še-': 'že’', 'ing': 'įg', 'v': 'n',
              'ank': 'ąk', 'unk': 'ųk', 'ink': 'įk', 'ung': 'ųk',
-             'ang': 'ąk', 'arn': 'ąn', 'ąnk': 'ąk', 'ųnk': 'ųk',
-             'įnk': 'įk', 'ąrn': 'an', 'ąng': 'ąk', 'ųng': 'ųk',
+             'ang': 'ąk', 'arn': 'an', 'ąnk': 'ąk', 'ųnk': 'ųk',
+             'įnk': 'įk', 'ąrn': 'ąn', 'ąng': 'ąk', 'ųng': 'ųk',
              'ing': 'įg', 'įng': 'įg', 'orn': 'on',
              'amp': 'ąp', 'onk': 'ąk', 'amb': 'ąp', 'de-': 'te’', 'd': 't',
              'šaną': 'šąną', 'anje': 'ąje', 'anjawi': 'ąjawi',
              'anj': 'ąc', 'kanąg': 'kąnąk', 'kaną': 'kąną',
              'šinį': 'šįnį', 'pinį': 'pįnį', 'kjane': 'kjene',
              'kjanįhawi': 'kjanąhawi', "unš": "ųš", 'jagu': 'jaagu',
-             'jeg': 'ceek', 'hinųg': 'hinųk', 'jowe': 'coowe',
+             'hinųg': 'hinųk', 'jowe': 'coowe',
              'jonį': 'coonį', 'jasge': 'jaasge', 'horuxuj': 'horoǧoc',
              'wąkšig': 'wąąkšik', 'šesge': 'žeesge', 'uine': 'ųire',
-             'aine': 'ąire', 'xji': 'xjį'}
+             'aine': 'ąire', 'xji': 'xjį', 'sb': 'š', 'kb': 'kh',
+             'khinųb': 'kiinųp', 'umb': 'ųp', 'hiąc-': 'hi’ąc ',
+             'hiąc': 'hi’ąc', 'hiunį': 'hi’ųnį',
+             '-hiran': 'iran', 'nąb': 'nąp', '-khine': ' kįire',
+             'khine': 'kįire', 'janti': 'cąąt’į', 'ant': 'ąt',
+             'hiu': 'hi’ų', 'hi’ųki': 'hiyųge', '-hire': 'ire',
+             'unų': 'ųnų', 'nąši': 'nąąžį', 'kišu': 'kižu',
+             'kižųn': 'kišųn', 'šeši': 'žeeži', 'šegu': 'žeegų',
+             "'": "’", 'giu': 'gi’ų', 't’ehi': 't’ee hii',
+             't’ew': 't’ee w'}
 worderrs = {'šige': 'žige', 'waša': 'wažą', 'wašara': 'wažąra',
             'wašanįša': 'wažąraižą', 'hiša': 'hižą',
             'hąnąj': 'hanąąc', 'egi': 'eegi',
             'eja': 'eeja', 'Mąura': 'Mąą’ųra', 'u': 'ųų',
             'nąb': 'nąąp', 'wąk': 'wąąk', 'hinįgra': 'hinįkra',
             'e': 'ee', 'hąp': 'hąąp', 'mą': 'mąą', 'įke': 'hįke',
-            'esge': 'eesge', 'roha': 'roohą', 'hakišu': 'hakižu',
-            'wakišu': 'waakižu', 'janąga': 'jaanąga', "eyi": "eegi",
+            'esge': 'eesge', 'roha': 'roohą',
+            'wakižu': 'waakižu', 'janąga': 'jaanąga', "eyi": "eegi",
             "ne": "nee", "wąkregi": "wąąkregi",
             "peše": "peežega", "weną": "weeną", "hųk": "hųųk",
             "hoera": "ho’era", "hageja": "haakeja", "raš": "raaš",
-            "hajįja": "hacįįja"
+            "hajįja": "hacįįja", 'jeg': 'ceek', 'jegeja': 'ceekeja'
             }
 
 
@@ -163,4 +174,39 @@ def replace_kjane(text):
     """
     text = text.replace('kjane', 'kjene')
     text = text.replace('kjanaw', 'kjanąw')
+    text = text.replace('hąąke', 'hąke')
+    text = text.replace('hegųąną', 'higųaną')
     return text
+
+
+def replace_dashkj(text):
+    """
+    Remove use of 'kjane' future marker in lexicon examples.
+
+    Parameters
+    ----------
+    text : string
+        Input text using 'kjane'.
+
+    Returns
+    -------
+    text : string
+        Output text with 'kjane' replaced by 'kjene'.
+    """
+    text = re.sub('([aeioų]+)-kj', r"\1kj", text)
+    text = re.sub('([bcdghjkmnprstwxž]+)-kj', r"\1ikj", text)
+    return text
+
+
+def nasalize(text):
+    text = re.sub('([mnMN]+)([aiuAIU])+', r"\1\2̨", text)
+    text = re.sub("̨̨", "̨", text)
+    return text
+
+
+def ends_g_to_k(wordlist):
+    for m in range(len(wordlist)):
+        word = wordlist[m]
+        if word.endswith('g'):
+            wordlist[m] = word[:-1]+'k'
+    return wordlist

@@ -37,7 +37,10 @@ WORD2 = Counter(clean_punctuation(open('weather_reports.txt',
                                        encoding='utf-8').read()).lower().split())
 with open('lexExamples.txt', encoding='utf-8') as f:
     textlex = f.read()
-WORD4 = Counter(clean_punctuation(scu.clean_characters(textlex)).lower().split())
+
+textlexlist = clean_punctuation(scu.clean_characters(textlex)).lower().split()
+textlexlist = scu.ends_g_to_k(textlexlist)
+WORD4 = Counter(textlexlist)
 WORDS.update(WORD2)
 WORDS.update(WORD4)
 
@@ -153,3 +156,26 @@ def correct3(word):
                   delknown(deletes2(word)) or
                   [word])
     return max(candidates, key=WORDS.get)
+
+
+import numpy.random as rand
+
+
+def test_sc3b(n=100):
+    rng = rand.default_rng(10)
+    twords = rng.choice(list(WORDS.keys()), n)
+    output = []
+    total1, total2 = 0, 0
+    for tword in twords:
+        eword1 = rng.choice(list(edits1(tword)))
+        eword2 = rng.choice(list(edits2(tword)))
+        sword1 = correct3(eword1)
+        sword2 = correct3(eword2)
+        output.append([tword, sword1, sword2])
+        if tword == sword1:
+            total1 += 1
+        if tword == sword2:
+            total2 += 1
+    print(total1/n*100, '% correct in ', n, ' 1-edit words')
+    print(total2/n*100, '% correct in ', n, ' 2-edit words')
+    return output
