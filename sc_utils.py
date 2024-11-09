@@ -199,14 +199,29 @@ def replace_dashkj(text):
 
 
 def nasalize(text):
+    """
+    Convert [a, i, u] following [m, n] to nasal vowel.
+
+    Parameters
+    ----------
+    text : string
+        String of Ho-Chunk text.
+
+    Returns
+    -------
+    text : string
+        String of Ho-Chunk text with vowels nasalized.
+    """
     text = re.sub('([mnMN]+)([aiuAIU])+', r"\1\2̨", text)
     text = re.sub("̨̨", "̨", text)
     return text
 
 
-def ends_g_to_k(wordlist):
+end_char_dict = {"g": "k", "j": "c", "b": "p"}
+def foot_replace(wordlist):
     for m in range(len(wordlist)):
         word = wordlist[m]
-        if word.endswith('g'):
-            wordlist[m] = word[:-1]+'k'
+        ech = word[-1]
+        if ech in end_char_dict.keys():
+            wordlist[m] = word[:-1] + end_char_dict[ech]
     return wordlist

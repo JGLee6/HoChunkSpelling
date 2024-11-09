@@ -108,7 +108,20 @@ checkdict = {'inj': 'įj', 'unj': 'ųj', 'jhi': 'cii', 'sh': 'š', 'zh': 'ž
              'bini': 'hini', '-nįk': 'nįk', "šejan": "žejąn",
              'sinš': 'sįc', 'bs': 'ps', 'gs': 'ks', 'js': 'cs',
              '-hašąną': 'hašąną', 'pb': 'ph', 'ye': 'ge', 'yo': 'go',
-             'yi': 'gi', 'gh': 'kh', 'bh': 'ph'}
+             'yi': 'gi', 'gh': 'kh', 'bh': 'ph', 'jh': 'ch', 'jb': 'jh',
+             'gi-u': 'gi’u', 'bir': 'hir', 'iie': 'ie', 'iio': 'io',
+             'khuha': 'kųųhą', 'tanį-': 'tanį', 'khenį': 'keenį',
+             '-wi': 'wi', 'šaua': 'šąną', 'ik-i': 'ik’i', 'nųb': 'nųp',
+             'sete': 'xete', 'ną-i': 'ną’i', 'chųi': 'cųi', 'papa': 'pąną',
+             'inp': 'įp', 'biša': 'hižą', 'aiša': 'aižą', 'eiša': 'eižą',
+             'iui': 'ini', 'i-šur': 'išur', 'šurog': 'šorog',
+             'gi-š': 'giš', 'res-ja': 'resikja', 'res-nį': 'resnį',
+             'chasga': 'caasga', 'awa-a': 'awa’a', 'šura': 'žura',
+             'ogišu': 'ogižu', '-ba': '-ha', 'šesga': 'žesga',
+             'nąxi': 'nąǧi', 'ay': 'ag', 'šiy': 'šik', 'sok': 'zok',
+             '̨y': '̨g', 'ey': 'eg', 'yk': 'nk', 'eua': 'ena',
+             'nąxgun': 'nąxgųn', 'hauąj': 'ha’ųaj', 'wauąj': 'wa’ųaj',
+             'siwi': 'sįwį', '-ranįk': 'ranįk', 'geja': 'keja'}
 worderrs = {'šige': 'žige', 'waša': 'wažą', 'wašara': 'wažąra',
             'wašanįša': 'wažąraižą', 'hiša': 'hižą', 'iša': 'hižą',
             'šesge': 'žeesge', 'hanąj': 'hanąąc', 'egi': 'eegi',
@@ -125,12 +138,21 @@ worderrs = {'šige': 'žige', 'waša': 'wažą', 'wašara': 'wažąra',
             "hajįja": "hacįįja", '-eja': 'eeja', "ne": "nee",
             "t’e": "t’ee", 'jegeja': 'ceekeja', 'jhanąx': 'caanąx',
             'hąnąj': 'hanąąc', 'wakižu': 'waakižu', 'jhasga': 'caasga',
-            'jega': 'jeega', 'jane': 'jaane', 'pi': 'pįį', 'mąra': 'mąąra'
+            'jega': 'jeega', 'jane': 'jaane', 'pi': 'pįį', 'mąra': 'mąąra',
+            'nąc': 'nąąc', 'higu': 'higų', 'reną': 'reeną',
+            'hireną': 'hiireną', 'wanįnera': 'waanįirera', 'mąu': 'mą’ų',
+            'hųkra': 'hųųkra', 'hogusra': 'hogųsra', 'rokąną': 'rookąną',
+            'hinųkjega': 'hinųkjeega', 'mąx': 'mąąx', 'hąpra' : 'hąąpra',
+            'jajiga': 'jaajiga', 'mąšja': 'mąąšją', 'ho': 'hoo',
+            'hijanera': 'hijąnera', 'hanįnera': 'hanįirera',
+            'rašra': 'raašra', 'epa': 'eepa', 'wore': 'woore', 'su': 'suu',
+            'hiwusųš': 'hiwusųc', 'jaaguiša': 'jaaguižą', 'mąnegi': 'mąąregi',
+            'jaagu-u': 'jaagu’ų', 'wa-i': 'wa’i', 'šun': 'š’ųų', 'š’un': 'š’ųų'
             }
 space_dict = {"-hianj": " hianj", "hianj-": "hianj ", "-hinig": " hinig",
               "hinig-": "hinig ", "-anaga": " anaga", "anaga-": "anaga ",
               "wianaga": "wi anaga", "nianaga": "ni anaga",
-              "hiranaga": "hire anaga", "uanaga": "u anaga",
+              "iranaga": "ire anaga", "uanaga": "u anaga",
               "ianaga": "i anaga", "-jega": " jega", "-nagre": " nagre",
               "-nanka": " nanka", "-jane": " jane", "-agre": " agre",
               "-gigi": " gigi", "-wagigi": " wagigi", "-nigi": " nigi",
@@ -139,7 +161,30 @@ space_dict = {"-hianj": " hianj", "hianj-": "hianj ", "-hinig": " hinig",
               'kerepana-': 'kerepana ', "d'eh": "d'e h", "wang-": "wang ",
               "-wang": " wang", 'hamb-': 'hamb ', '-hamb': ' hamb',
               '-wah': ' wah', '-hahi': ' hahi', '-haji': ' haji',
-              '-nai': ' nai', '-harni': ' harni'}
+              '-nai': ' nai', '-harni': ' harni', 'woehi-': 'wo’e hii ',
+              'sto-': 'stoo ', 'nab-': 'nab ', 'naj-': 'naj ', 'jhi-': 'jhi ',
+              'nige-': 'nige ', 'harni-': 'harni ', 'howa-hu': 'howahu ',
+              'ruj-': 'ruj ', 'hija-': 'hija ', '-hiru': ' hiru',
+              '-jhi': ' jhi', '-hojhi': ' hojhi', '-kiri': ' kiri',
+              'howe-': 'howe ', 'phi-': 'phi ', '-xete': ' xete',
+              'shishig-': 'shishig ', '-shishig': ' shishig',
+              '-wara': ' wara', '-nihe': ' nihe', 'xete-': 'xete ',
+              'hogihi-': 'hogihi ', '-wirac': ' wirac', '-wiru': ' wiru',
+              '-raje': ' raje', '-haj': ' haj', '-hara': ' hara',
+              'niamb-': 'ni’amb ', 'waj-': 'waj ', '-wagi': ' wagi',
+              '-ingig': ' hingig', 'najge-': 'najge ', '-karagi': ' karagi',
+              '-hu': ' hu', 'jeg-': 'jeg ', 'roha-': 'roha ', '-rehi': ' rehi',
+              '-nunige': ' nunige', 'res-hik': 'res hik', 'kara-u': 'kara u',
+              'shu-u': 'shu u', '-egi': ' egi', 'egi-': 'egi ', 'max-': 'max ',
+              'mas-': 'mas ', '-hashi': ' hashi', '-washi': ' washi',
+              '-warni': ' warni', 'shura-': 'shura ', 'howare-': 'howare ',
+              '-nup': ' nup', 'inanaga': 'ine anaga', 'naxi-': 'naxi ',
+              'janti-': 'janti ', 'nagu-': 'nagu '
+              }
+
+shelist = ["hiše", "šguuše", "ranįše", "wašoše", "šuuše", "xguxguiše",
+           "waše", "šaraše", "hiwaše", "waišoše", "wanįšoše", "giše", "haiše",
+           "raiše", "nąąše", "nąraše"]
 
 
 def case_of(text):
@@ -163,8 +208,22 @@ def clean_egi(text):
                 word = word[:3]+" "+word[3:]
             elif word.startswith("eyi") and word != "eyi":
                 word = word[:3]+" "+word[3:]
+            elif word.startswith("eshi") and word != "eshi":
+                word = word[:4]+" "+word[4:]
             elif word.startswith("esge") and word != "esge":
                 word = word[:4]+" "+word[4:]
+            elif word.startswith("kheni") and word != "kheni":
+                word = word[:5]+" "+word[5:]
+            elif word.startswith("ni-") and word != "ni-":
+                word = word[:2]+" "+word[3:]
+            elif word.startswith("ma-") and word != "ma-":
+                word = word[:2]+" "+word[3:]
+            elif word.startswith("peshe") and word != "peshe":
+                word = word[:5]+" "+word[5:]
+            elif word.startswith("e-") and word != "e-":
+                word = "ee "+word[2:]
+            elif word.endswith("nunige") and word != "nunige":
+                word = word[:-6] + ' nunige'
             #elif word.startswith("šesge") and word != "šesge":
             #    word = word[:4]+" "+word[4:]
             if word.endswith("-eja") and word != "-eja":
@@ -234,6 +293,16 @@ def clean_spell(text):
                 word = word[:-5] + 'šąną'
             elif word.endswith("giši"):
                 word = word[:-5] + "giži"
+            elif word.endswith("-"):
+                word = word[:-1]
+            elif word.endswith("-un"):
+                word = word[:-3] + "’ų"
+            elif word.endswith("aun"):
+                word = word[:-2] + "’ų"
+            elif word.endswith("še") and word not in shelist:
+                word = word[:-3] + "že"
+            if ('ss' in word) and ('sš' not in word):
+                word = word.replace('ss', 's')
             words[m] = case(word)
         lines[k] = ' '.join(words)
     text = '\n'.join(lines)

@@ -9,7 +9,8 @@ Created on Thu Jul 29 13:01:11 2021
 """
 Get Lexicon permutations
 """
-filename = 'Merged4LP.txt'
+PATH = '/Users/johnglee/Documents/HoChunk/Lexique Pro Data/'
+filename = PATH + 'Merged4LP.txt'
 with open(filename, 'r', encoding='utf-8') as f:
     lines = f.readlines()
 num_lines = len(lines)

@@ -16,7 +16,7 @@ https://norvig.com/spell-correct.html
 
 def clean_punctuation(text):
     """Ignore punctuation of text."""
-    return re.sub('[,.@:;?!"]', ' ', text)
+    return re.sub('[,.@:;?!"/]', ' ', text)
 
 
 def deletes1(word):
@@ -38,8 +38,11 @@ WORD2 = Counter(clean_punctuation(open('weather_reports.txt',
 with open('lexExamples.txt', encoding='utf-8') as f:
     textlex = f.read()
 
-textlexlist = clean_punctuation(scu.clean_characters(textlex)).lower().split()
-textlexlist = scu.ends_g_to_k(textlexlist)
+texlex = scu.remove_nhat(scu.clean_characters(textlex))
+texlex = scu.replace_kjane(texlex)
+textlex = scu.nasalize(textlex)
+textlexlist = clean_punctuation(texlex).lower().split()
+textlexlist = scu.foot_replace(textlexlist)
 WORD4 = Counter(textlexlist)
 WORDS.update(WORD2)
 WORDS.update(WORD4)
