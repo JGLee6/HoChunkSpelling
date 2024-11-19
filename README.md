@@ -1,7 +1,7 @@
 # HoChunkSpelling
 Spell-checker for Ho-Chunk (Hoocąk)
 
-This Ho-Chunk spell checker uses the Symspell method [2] of a dictionary of only deletes modified from Peter Norvig’s spell checker [1].
+This Ho-Chunk spell checker uses the Symspell method [2] of a dictionary of only deletes modified from Peter Norvig’s spell checker [1]. This repository does not include the source data files.
 
 ## References
 1. [How to write a spelling corrector][1]
